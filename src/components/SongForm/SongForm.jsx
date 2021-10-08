@@ -68,7 +68,7 @@ class SongForm extends Component {
                 <br />
                 <div>
                     <label>Release Date:</label>
-                    <input name='release_date' onChange={this.handleChange} value={this.state.release_date} />
+                    <input name='release_date' type='date' onChange={this.handleChange} value={this.state.release_date} />
                 </div>
                 <br />
                 <div>

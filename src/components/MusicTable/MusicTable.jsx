@@ -1,8 +1,8 @@
 import React from 'react';
 
 const MusicTable = (props) => {
-        return (
-            <table>
+    return (
+        <table>
             <tbody>
             <tr>
                 <th>Title</th>
@@ -19,13 +19,15 @@ const MusicTable = (props) => {
                         <td>{song.artist}</td>
                         <td>{song.genre}</td>
                         <td>{song.release_date}</td>
-                        <td><button onClick={event => props.deleteSong(song.id)}>Delete</button></td>
+                        <td>
+                            <button onClick={event => props.deleteSong(song.id)}>Delete</button>
+                        </td>
                     </tr>
-                )
-            })}
-            </tbody>
+                    )
+                })}
+                </tbody>
             </table>
-        )
+    )
 }
-
+        
 export default MusicTable;
