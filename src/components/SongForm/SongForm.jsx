@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class SongForm extends Component {
-    state = {
-        title: '',
-        album: '',
-        artist: '',
-        genre: '',
-        release_date: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            album: '',
+            artist: '',
+            genre: '',
+            release_date: ''
+        };
     }
 
     async componentDidMount() {
-        let song = {};
-        let response = await axios.post('http://127.0.0.1:8000/music/', song);
+        let response = await axios.post('http://127.0.0.1:8000/music/');
         this.setState({
-            song: response.data
+            title: response.data.title,
+            album: response.data.album,
+            artist: response.data.artist,
+            genre: response.data.genre,
+            release_date: response.data.release_date
         });
     }
 
@@ -26,7 +32,7 @@ class SongForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.createSong(this.state);
+        this.props.createSong(this.state);
     }
 
     render() {
@@ -55,6 +61,10 @@ class SongForm extends Component {
                 <div>
                     <label>Release Date:</label>
                     <input name='release_date' onChange={this.handleChange} value={this.state.release_date} />
+                </div>
+                <br />
+                <div>
+                    <button type='submit'>Create Song</button>
                 </div>
             </form>
         );
