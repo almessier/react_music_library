@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import MusicTable from './components/MusicTable/MusicTable';
@@ -12,11 +12,11 @@ class App extends Component {
         };
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.getSongs();
     }
 
-    async getSongs() {
+    getSongs = async () => {
         try{
             let response = await axios.get('http://127.0.0.1:8000/music/');
             this.setState({
@@ -24,33 +24,25 @@ class App extends Component {
             });
         }
         catch (ex) {
-            console.log('Error in API call');
+            console.log('Error in getSongs API call', ex);
         }
     }
 
-    async deleteSong(song) {
+    deleteSong = async (song_id) => {
         try{
-            await axios.delete(`http://127.0.0.1:8000/music/${song.id}/`);
+            await axios.delete(`http://127.0.0.1:8000/music/${song_id}/`);
             this.getSongs();
         }
         catch (ex) {
-            console.log('Error in API call');
+            console.log('Error in deleteSong API call', ex);
         }
-    }
-
-    createSong = (song) => {
-        let newSongs = this.state.songs;
-        newSongs.push(song);
-        this.setState({
-            songs: newSongs
-        })
     }
 
     render(){
         return (
             <div className='container'>
                 <MusicTable deleteSong={this.deleteSong} songs={this.state.songs}/>
-                <SongForm createSong={this.createSong} />
+                <SongForm getSongs={this.getSongs} createSong={this.createSong} />
             </div>
         )
     };

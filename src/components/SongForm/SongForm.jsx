@@ -9,19 +9,27 @@ class SongForm extends Component {
             album: '',
             artist: '',
             genre: '',
-            release_date: ''
+            release_date: '',
+            likes: 0
         };
     }
 
-    async componentDidMount() {
-        let response = await axios.post('http://127.0.0.1:8000/music/');
-        this.setState({
-            title: response.data.title,
-            album: response.data.album,
-            artist: response.data.artist,
-            genre: response.data.genre,
-            release_date: response.data.release_date
-        });
+    createSong = async () => {
+        let song = {
+            title: this.state.title,
+            album: this.state.album,
+            artist: this.state.artist,
+            genre: this.state.genre,
+            release_date: this.state.release_date,
+            likes: 0
+        }
+        try{
+            await axios.post('http://127.0.0.1:8000/music/', song);
+            this.props.getSongs();
+        }
+        catch(ex) {
+            console.log('Error in createSong API call', ex);
+        }
     }
 
     handleChange = (event) => {
@@ -32,7 +40,7 @@ class SongForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.createSong(this.state);
+        this.createSong();
     }
 
     render() {
