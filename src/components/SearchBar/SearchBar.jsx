@@ -7,7 +7,7 @@ class SearchBar extends Component {
         super(props);
         this.state = {
             search : '',
-            category: ''
+            category: 'title',
         };
     }
 
@@ -25,6 +25,11 @@ class SearchBar extends Component {
         } else if (this.state.category === 'release_date') {
             results = this.props.songs.filter(song => song.release_date === search)
         }
+        return results
+    }
+
+    clearFilter = () => {
+        this.props.getSongs();
     }
 
     handleChange = (event) => {
@@ -35,7 +40,8 @@ class SearchBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.filterSongs();
+        let filteredSongs = this.filterSongs();
+        this.props.updateSongList(filteredSongs);
     }
 
     render() {
@@ -59,6 +65,9 @@ class SearchBar extends Component {
                 </div>
                 <div>
                     <button type='submit'>Filter Songs</button>
+                </div>
+                <div>
+                    <button onClick={this.clearFilter}>Clear Filters</button>
                 </div>
             </form>
             </React.Fragment>

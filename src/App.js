@@ -39,12 +39,18 @@ class App extends Component {
         }
     }
 
+    updateSongList = (songs) => {
+        this.setState({
+            songs: songs
+        });
+    }
+
     render(){
         return (
             <div className='container'>
                 <MusicTable deleteSong={this.deleteSong} songs={this.state.songs}/>
                 <SongForm getSongs={this.getSongs} createSong={this.createSong} />
-                <SearchBar songs={this.state.songs} />
+                <SearchBar getSongs={this.getSongs} songs={this.state.songs} updateSongList={this.updateSongList}/>
             </div>
         )
     };
