@@ -29,9 +29,9 @@ class App extends Component {
         }
     }
 
-    deleteSong = async (song_id) => {
+    deleteSong = async (songId) => {
         try{
-            await axios.delete(`http://127.0.0.1:8000/music/${song_id}/`);
+            await axios.delete(`http://127.0.0.1:8000/music/${songId}/`);
             this.getSongs();
         }
         catch (ex) {
@@ -44,7 +44,7 @@ class App extends Component {
             <div className='container'>
                 <MusicTable deleteSong={this.deleteSong} songs={this.state.songs}/>
                 <SongForm getSongs={this.getSongs} createSong={this.createSong} />
-                <SearchBar />
+                <SearchBar songs={this.state.songs} />
             </div>
         )
     };
