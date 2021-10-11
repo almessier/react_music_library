@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MusicTable from '../MusicTable/MusicTable';
-import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import './SearchBar.css'
 
 class SearchBar extends Component {
     constructor(props) {
@@ -47,29 +47,34 @@ class SearchBar extends Component {
     render() {
         return (
             <React.Fragment>
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <label htmlFor='category'>Choose a filter:</label>
-                <select name='category' value={this.state.category} onChange={this.handleChange}>
-                    <option value='title'>Title</option>
-                    <option value='album'>Album</option>
-                    <option value='artist'>Artist</option>
-                    <option value='genre'>Genre</option>
-                    <option value='release_date'>Release Date</option>
-                </select>
-            </form>
+            <div className='card bg-dark'>
+                <h5>Filter Songs</h5>
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <label htmlFor='category'>Choose a filter:</label>
+                    <select name='category' value={this.state.category} onChange={this.handleChange}>
+                        <option value='title'>Title</option>
+                        <option value='album'>Album</option>
+                        <option value='artist'>Artist</option>
+                        <option value='genre'>Genre</option>
+                        <option value='release_date'>Release Date</option>
+                    </select>
+                </form>
 
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <div>
-                    <label>Search:</label>
-                    <input name='search' onChange={this.handleChange} value={this.state.search} />
-                </div>
-                <div>
-                    <button type='submit'>Filter Songs</button>
-                </div>
-                <div>
-                    <button onClick={this.clearFilter}>Clear Filters</button>
-                </div>
-            </form>
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <div>
+                        <label>Search:</label>
+                        <input name='search' onChange={this.handleChange} value={this.state.search} />
+                    </div>
+                    <div>
+                        <div className='filter-button'>
+                            <Button type='submit'>Apply Filter</Button>
+                        </div>
+                        <div className='filter-button'>
+                            <Button onClick={this.clearFilter}>Clear Filters</Button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             </React.Fragment>
         );
     }
