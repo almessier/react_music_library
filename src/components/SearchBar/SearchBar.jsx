@@ -42,6 +42,9 @@ class SearchBar extends Component {
         event.preventDefault();
         let filteredSongs = this.filterSongs();
         this.props.updateSongList(filteredSongs);
+        this.setState({
+            search : ''
+        })
     }
 
     render() {

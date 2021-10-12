@@ -36,6 +36,13 @@ class SongForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.createSong();
+        this.setState({
+            title: '',
+            album: '',
+            artist: '',
+            genre: '',
+            release_date: ''
+        })
     }
 
     render() {

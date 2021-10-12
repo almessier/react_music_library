@@ -49,13 +49,13 @@ class App extends Component {
 
     render(){
         return (
-            <div className='container-md'>
+            <div className='container-lg'>
                 <div className='row'>
                     <Header />
-                    <div className='col-md-8'>
+                    <div className='col-md-9'>
                         <MusicTable deleteSong={this.deleteSong} songs={this.state.songs} />
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-md-3'>
                         <SearchBar getSongs={this.getSongs} songs={this.state.songs} updateSongList={this.updateSongList} />
                         <SongForm getSongs={this.getSongs} createSong={this.createSong} />
                     </div>
