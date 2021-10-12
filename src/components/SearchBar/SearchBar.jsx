@@ -47,11 +47,11 @@ class SearchBar extends Component {
     render() {
         return (
             <React.Fragment>
-            <div className='card bg-dark'>
-                <h5>Filter Songs</h5>
+            <div className='card bg-dark card-pad'>
+                <h5 className='filter-header'>Filter Songs</h5>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <label htmlFor='category'>Choose a filter:</label>
-                    <select name='category' value={this.state.category} onChange={this.handleChange}>
+                    <label className='filter-label' htmlFor='category'>Choose a filter:</label>
+                    <select className='filter-select' name='category' value={this.state.category} onChange={this.handleChange}>
                         <option value='title'>Title</option>
                         <option value='album'>Album</option>
                         <option value='artist'>Artist</option>
@@ -61,16 +61,14 @@ class SearchBar extends Component {
                 </form>
 
                 <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <div>
-                        <label>Search:</label>
-                        <input name='search' onChange={this.handleChange} value={this.state.search} />
+                    <div className='row search-row'>
+                        <label>Search</label>
+                        <input className='form-control' name='search' onChange={this.handleChange} value={this.state.search} />
                     </div>
-                    <div>
-                        <div className='filter-button'>
-                            <Button type='submit'>Apply Filter</Button>
-                        </div>
-                        <div className='filter-button'>
-                            <Button onClick={this.clearFilter}>Clear Filters</Button>
+                    <div className='row filter'>
+                        <div>
+                            <Button className='filter-button form-control' type='submit'>Apply Filter</Button>
+                            <Button className='filter-button form-control' onClick={this.clearFilter}>Clear Filters</Button>
                         </div>
                     </div>
                 </form>

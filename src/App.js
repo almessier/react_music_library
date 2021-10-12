@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import MusicTable from './components/MusicTable/MusicTable';
 import SearchBar from './components/SearchBar/SearchBar';
 import SongForm from './components/SongForm/SongForm';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
     constructor(props){
@@ -48,16 +49,17 @@ class App extends Component {
 
     render(){
         return (
-            <div className='container container-md'>
+            <div className='container-md'>
                 <div className='row'>
                     <Header />
-                    <div className='col-md-6'>
+                    <div className='col-md-8'>
                         <MusicTable deleteSong={this.deleteSong} songs={this.state.songs} />
                     </div>
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                         <SearchBar getSongs={this.getSongs} songs={this.state.songs} updateSongList={this.updateSongList} />
                         <SongForm getSongs={this.getSongs} createSong={this.createSong} />
                     </div>
+                    <Footer />
                 </div>
             </div>
         )

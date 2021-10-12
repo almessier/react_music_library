@@ -2,3 +2,13 @@
   padding-top: 4px;
   padding-bottom: 4px;
 }
+
+.delete-col {
+  width: 7%;
+}
+
+.list-header {
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-top: 12px;
+}

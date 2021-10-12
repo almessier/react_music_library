@@ -1,3 +1,26 @@
+.card-pad {
+  padding: 12px;
+}
+
+.filter {
+  display: flex;
+}
+
 .filter-button {
-  padding: 4px;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.filter-header {
+  margin-bottom: 24px;
+}
+
+.filter-label {
+  margin-right: 12px;
+}
+
+.search-row {
+  padding: 12px;
+  padding-bottom: 0px;
 }

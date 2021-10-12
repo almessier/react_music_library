@@ -1,15 +1,15 @@
 import React from 'react';
-import './Header.css'
+import './Footer.css'
 
 
-const Header = () => {
+const Footer = () => {
     return (
         <React.Fragment>
         <div className='col-md-12 text-center'>
-            <h1 className='header-text card bg-dark'>♫ React Music Library ♫</h1>
+            <h5 className='footer-text card bg-dark'>Created by Alexander Messier</h5>
         </div>
         </React.Fragment>
     )
 }
 
-export default Header;
+export default Footer;
